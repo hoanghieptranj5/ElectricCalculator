@@ -1,4 +1,7 @@
-﻿namespace ElectricCalculator;
+﻿using System.Reflection;
+using Microsoft.OpenApi.Models;
+
+namespace ElectricCalculator;
 
 public class Startup
 {
@@ -13,6 +16,14 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers();
+
+        services.AddSwaggerGen(swagger =>
+        {
+            swagger.SwaggerDoc("v1", new OpenApiInfo() { Title = "Customer API"});
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            swagger.IncludeXmlComments(xmlPath);
+        });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -26,6 +37,14 @@ public class Startup
         app.UseHttpsRedirection();
 
         app.UseRouting();
+        
+        // Swagger
+        app.UseSwagger(c => c.RouteTemplate = "swagger/{documentName}/swagger.json");
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("v1/swagger.json", "Customer API v1");
+            c.RoutePrefix = "swagger";
+        });
 
         app.UseAuthorization();
 
