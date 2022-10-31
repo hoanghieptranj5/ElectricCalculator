@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.OpenApi.Models;
+using Repositories;
+using Repositories.IUnitOfWork;
 
 namespace ElectricCalculator;
 
@@ -24,6 +26,10 @@ public class Startup
             var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             swagger.IncludeXmlComments(xmlPath);
         });
+
+        services.AddDbContext<ApplicationDbContext>();
+
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
