@@ -1,4 +1,6 @@
 ﻿using System.Reflection;
+using ElectricCalculator.Logics;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Repositories;
 using Repositories.IUnitOfWork;
@@ -27,9 +29,17 @@ public class Startup
             swagger.IncludeXmlComments(xmlPath);
         });
 
-        services.AddDbContext<ApplicationDbContext>();
+        var serverVersion = new MySqlServerVersion(new Version(8, 0, 30));
+
+        services.AddDbContext<ApplicationDbContext>(options =>
+        {
+            options.UseMySql(Configuration.GetConnectionString("Electric"), serverVersion)
+                .LogTo(Console.WriteLine, LogLevel.Information)
+                .EnableDetailedErrors();
+        });
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<ICalculatedItemLogic, CalculatedItemLogic>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
