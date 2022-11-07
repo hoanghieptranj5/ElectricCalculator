@@ -29,11 +29,11 @@ public class Startup
             swagger.IncludeXmlComments(xmlPath);
         });
 
-        var serverVersion = new MySqlServerVersion(new Version(8, 0, 30));
+        // var serverVersion = new Sql(new Version(8, 0, 30));
 
         services.AddDbContext<ApplicationDbContext>(options =>
         {
-            options.UseMySql(Configuration.GetConnectionString("Electric"), serverVersion)
+            options.UseSqlServer(Configuration.GetConnectionString("Electric"))
                 .LogTo(Console.WriteLine, LogLevel.Information)
                 .EnableDetailedErrors();
         });

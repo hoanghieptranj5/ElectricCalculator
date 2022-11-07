@@ -22,9 +22,8 @@ public class CalculatedItemController : ControllerBase
     }
 
     [HttpPost("{id}")]
-    public async Task<IActionResult> CreateOne(int id, CalculatedItem item)
+    public async Task<IActionResult> CreateOne(CalculatedItem item)
     {
-        item.Id = id;
         var ok = await _calculatedItemLogic.Add(item);
         return Ok(ok);
     }
