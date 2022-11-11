@@ -1,4 +1,5 @@
-﻿using Repositories.IUnitOfWork;
+﻿using Microsoft.EntityFrameworkCore;
+using Repositories.IUnitOfWork;
 using Repositories.Models;
 
 namespace ElectricCalculator.Logics;
@@ -14,12 +15,19 @@ public class CalculatedItemLogic : ICalculatedItemLogic
 
     public async Task<IEnumerable<CalculatedItem>> GetList()
     {
-        return _unitOfWork.CalculatedItem.All().AsEnumerable();
+        return await _unitOfWork.CalculatedItems.All().ToListAsync();
     }
 
     public async Task<bool> Add(CalculatedItem entity)
     {
-        var result = await _unitOfWork.CalculatedItem.Add(entity);
+        var result = await _unitOfWork.CalculatedItems.Add(entity);
+        await _unitOfWork.CompleteAsync();
+        return result;
+    }
+
+    public async Task<bool> Remove(int id)
+    {
+        var result = await _unitOfWork.CalculatedItems.Delete(id);
         await _unitOfWork.CompleteAsync();
         return result;
     }

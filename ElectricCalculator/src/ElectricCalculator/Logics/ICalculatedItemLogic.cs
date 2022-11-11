@@ -6,4 +6,5 @@ public interface ICalculatedItemLogic
 {
     Task<IEnumerable<CalculatedItem>> GetList();
     Task<bool> Add(CalculatedItem entity);
+    Task<bool> Remove(int id);
 }

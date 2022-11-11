@@ -9,10 +9,10 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     public UnitOfWork(ApplicationDbContext context)
     {
         _context = context;
-        CalculatedItem = new CalculatedItemRepository(context);
+        CalculatedItems = new CalculatedItemRepository(context);
     }
 
-    public CalculatedItemRepository CalculatedItem { get; set; }
+    public CalculatedItemRepository CalculatedItems { get; set; }
 
     public async Task CompleteAsync()
     {

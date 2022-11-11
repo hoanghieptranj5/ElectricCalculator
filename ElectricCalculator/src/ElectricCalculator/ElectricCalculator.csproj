@@ -11,7 +11,8 @@
         <!-- Generate ready to run images during publishing to improve cold start time. -->
         <PublishReadyToRun>true</PublishReadyToRun>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-      <UserSecretsId>b5204140-745c-4680-b374-2a8f816b5d2f</UserSecretsId>
+        <UserSecretsId>b5204140-745c-4680-b374-2a8f816b5d2f</UserSecretsId>
+        <NoWarn>1591</NoWarn>
   </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="7.2.0" />

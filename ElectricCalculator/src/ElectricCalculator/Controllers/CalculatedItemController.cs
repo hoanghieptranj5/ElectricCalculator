@@ -27,4 +27,11 @@ public class CalculatedItemController : ControllerBase
         var ok = await _calculatedItemLogic.Add(item);
         return Ok(ok);
     }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> RemoveOne(int id)
+    {
+        var result = await _calculatedItemLogic.Remove(id);
+        return Ok(result);
+    }
 }
