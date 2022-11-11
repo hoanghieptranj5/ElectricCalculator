@@ -11,8 +11,8 @@ using Repositories;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221111134428_ChangedModelName")]
-    partial class ChangedModelName
+    [Migration("20221111142504_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,7 +42,7 @@ namespace Repositories.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CalculatedItems");
+                    b.ToTable("Pricings");
                 });
 #pragma warning restore 612, 618
         }

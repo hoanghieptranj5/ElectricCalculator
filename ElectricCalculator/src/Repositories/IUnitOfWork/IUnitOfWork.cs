@@ -4,7 +4,7 @@ namespace Repositories.IUnitOfWork;
 
 public interface IUnitOfWork
 {
-    public CalculatedItemRepository CalculatedItems { get; set; }
+    public PricingRepository Pricings { get; set; }
     Task CompleteAsync();
     void Dispose();
 }

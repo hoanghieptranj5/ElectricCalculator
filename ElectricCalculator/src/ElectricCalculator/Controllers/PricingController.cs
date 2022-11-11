@@ -21,7 +21,14 @@ public class PricingController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost("{id}")]
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetOneById(int id)
+    {
+        var result = await _pricingLogic.GetOneById(id);
+        return Ok(result);
+    }
+
+    [HttpPost]
     public async Task<IActionResult> CreateOne(Pricing item)
     {
         var ok = await _pricingLogic.Add(item);

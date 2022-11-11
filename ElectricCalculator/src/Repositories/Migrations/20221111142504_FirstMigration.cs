@@ -4,31 +4,30 @@
 
 namespace Repositories.Migrations
 {
-    public partial class Initial : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CalculatedItems",
+                name: "Pricings",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     From = table.Column<int>(type: "int", nullable: false),
-                    StandardPrice = table.Column<float>(type: "real", nullable: false),
-                    Price = table.Column<float>(type: "real", nullable: false),
-                    Usage = table.Column<int>(type: "int", nullable: false)
+                    To = table.Column<int>(type: "int", nullable: false),
+                    StandardPrice = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CalculatedItems", x => x.Id);
+                    table.PrimaryKey("PK_Pricings", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CalculatedItems");
+                name: "Pricings");
         }
     }
 }

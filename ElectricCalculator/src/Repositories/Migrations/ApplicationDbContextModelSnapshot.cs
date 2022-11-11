@@ -40,7 +40,7 @@ namespace Repositories.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CalculatedItems");
+                    b.ToTable("Pricings");
                 });
 #pragma warning restore 612, 618
         }
