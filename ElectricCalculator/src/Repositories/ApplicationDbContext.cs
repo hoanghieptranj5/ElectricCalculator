@@ -5,7 +5,7 @@ namespace Repositories;
 
 public class ApplicationDbContext : DbContext
 {
-    public DbSet<CalculatedItem> CalculatedItems { get; set; }
+    public DbSet<Pricing> CalculatedItems { get; set; }
     
     protected ApplicationDbContext()
     {

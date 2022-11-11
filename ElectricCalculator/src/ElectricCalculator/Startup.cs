@@ -39,7 +39,7 @@ public class Startup
         });
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-        services.AddScoped<ICalculatedItemLogic, CalculatedItemLogic>();
+        services.AddScoped<IPricingLogic, PricingLogic>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

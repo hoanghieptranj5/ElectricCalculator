@@ -2,7 +2,7 @@
 
 namespace Repositories.Repositories;
 
-public class CalculatedItemRepository : RepositoryBase<CalculatedItem>
+public class CalculatedItemRepository : RepositoryBase<Pricing>
 {
     public CalculatedItemRepository(ApplicationDbContext context) : base(context)
     {

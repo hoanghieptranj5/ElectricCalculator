@@ -4,21 +4,21 @@ using Repositories.Models;
 
 namespace ElectricCalculator.Logics;
 
-public class CalculatedItemLogic : ICalculatedItemLogic
+public class PricingLogic : IPricingLogic
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public CalculatedItemLogic(IUnitOfWork unitOfWork)
+    public PricingLogic(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IEnumerable<CalculatedItem>> GetList()
+    public async Task<IEnumerable<Pricing>> GetList()
     {
         return await _unitOfWork.CalculatedItems.All().ToListAsync();
     }
 
-    public async Task<bool> Add(CalculatedItem entity)
+    public async Task<bool> Add(Pricing entity)
     {
         var result = await _unitOfWork.CalculatedItems.Add(entity);
         await _unitOfWork.CompleteAsync();
