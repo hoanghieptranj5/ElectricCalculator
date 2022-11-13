@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using ElectricCalculator.Extensions;
 using ElectricCalculator.Logics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -37,9 +38,8 @@ public class Startup
                 .LogTo(Console.WriteLine, LogLevel.Information)
                 .EnableDetailedErrors();
         });
-
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
-        services.AddScoped<IPricingLogic, PricingLogic>();
+        
+        services.AddPricings();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
