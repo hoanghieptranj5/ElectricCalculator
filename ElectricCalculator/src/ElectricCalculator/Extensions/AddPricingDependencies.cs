@@ -6,11 +6,11 @@ namespace ElectricCalculator.Extensions;
 
 public static class AddPricingDependencies
 {
-    public static IServiceCollection AddPricings(this IServiceCollection services)
+    public static IServiceCollection AddCalculationAndPricingConfigs(this IServiceCollection services)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IPricingLogic, PricingLogic>();
-        services.AddScoped<CalculationLogic>();
+        services.AddScoped<ICalculationLogic, CalculationLogic>();
         
         return services;
     }

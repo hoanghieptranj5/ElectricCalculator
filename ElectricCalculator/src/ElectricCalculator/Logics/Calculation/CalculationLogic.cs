@@ -2,7 +2,7 @@ using ElectricCalculator.Models;
 
 namespace ElectricCalculator.Logics.Calculation;
 
-public class CalculationLogic
+public class CalculationLogic : ICalculationLogic
 {
     private readonly IPricingLogic _pricingLogic;
 
@@ -11,7 +11,7 @@ public class CalculationLogic
         _pricingLogic = pricingLogic;
     }
 
-    public async Task<CalculatedModel> Calculate(int usage)
+    public async Task<CalculatedModel> CalculateAsync(int usage)
     {
         var pricings = await _pricingLogic.GetList();
         var remaining = usage;

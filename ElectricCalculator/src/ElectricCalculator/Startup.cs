@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using ElectricCalculator.Extensions;
+using ElectricCalculator.Filters;
 using ElectricCalculator.Logics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -39,7 +40,9 @@ public class Startup
                 .EnableDetailedErrors();
         });
         
-        services.AddPricings();
+        services.AddCalculationAndPricingConfigs();
+
+        services.AddScoped<AsyncActionFilterExample>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

@@ -13,6 +13,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     }
 
     public PricingRepository Pricings { get; set; }
+    public CalculationHistoryRepository CalculationHistories { get; set; }
 
     public async Task CompleteAsync()
     {

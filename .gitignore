@@ -1,5 +1,4 @@
 /obj/
 /.idea/
-/*/*/obj/
-/*/*/*/obj/
-/*/*/*/bin/
+bin/
+obj/
