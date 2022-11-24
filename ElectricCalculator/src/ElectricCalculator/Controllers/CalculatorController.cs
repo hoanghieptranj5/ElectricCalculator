@@ -1,5 +1,5 @@
 using ElectricCalculator.Filters;
-using ElectricCalculator.Logics.Calculation;
+using ElectricCalculator.Logics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ElectricCalculator.Controllers;
@@ -7,17 +7,17 @@ namespace ElectricCalculator.Controllers;
 [Route("[Controller]")]
 public class CalculatorController : ControllerBase
 {
-    private readonly ICalculationLogic _calculationLogic;
+    private readonly CalculationWrapper _calculationWrapper;
 
-    public CalculatorController(CalculationLogic calculationLogic)
+    public CalculatorController(CalculationWrapper calculationWrapper)
     {
-        _calculationLogic = calculationLogic;
+        _calculationWrapper = calculationWrapper;
     }
 
     [ServiceFilter(typeof(AsyncActionFilterExample))]
     [HttpGet("{usage}")]
     public async Task<IActionResult> Calculate(int usage)
     {
-        return Ok(await _calculationLogic.CalculateAsync(usage));
+        return Ok(await _calculationWrapper.CalculateAsync(usage));
     }
 }

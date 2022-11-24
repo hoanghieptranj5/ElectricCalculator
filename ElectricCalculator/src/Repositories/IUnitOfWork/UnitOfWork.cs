@@ -10,6 +10,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     {
         _context = context;
         Pricings = new PricingRepository(context);
+        CalculationHistories = new CalculationHistoryRepository(context);
     }
 
     public PricingRepository Pricings { get; set; }
