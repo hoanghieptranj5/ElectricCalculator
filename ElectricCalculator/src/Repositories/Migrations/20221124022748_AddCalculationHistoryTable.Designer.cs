@@ -12,8 +12,8 @@ using Repositories;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221124020839_CalculationHistory")]
-    partial class CalculationHistory
+    [Migration("20221124022748_AddCalculationHistoryTable")]
+    partial class AddCalculationHistoryTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

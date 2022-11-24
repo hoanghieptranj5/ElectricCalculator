@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repositories.Migrations
 {
-    public partial class CalculationHistory : Migration
+    public partial class AddCalculationHistoryTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
