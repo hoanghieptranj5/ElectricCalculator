@@ -19,4 +19,11 @@ public class CalculationHistoryController : ControllerBase
         var result = await _calculationHistoryLogic.All();
         return Ok(result);
     }
+    
+    [HttpGet("oneMonthBefore")]
+    public async Task<IActionResult> HistoriesWithinOneMonthBefore()
+    {
+        var result = await _calculationHistoryLogic.HistoriesWithinOneMonthBefore();
+        return Ok(result);
+    }
 }

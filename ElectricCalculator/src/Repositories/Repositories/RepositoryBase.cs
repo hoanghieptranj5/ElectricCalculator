@@ -42,8 +42,8 @@ public class RepositoryBase<T> : IGenericRepository<T> where T : class
         throw new NotImplementedException();
     }
 
-    public virtual async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate)
+    public virtual IQueryable<T> Find(Expression<Func<T, bool>> predicate)
     {
-        return await dbSet.Where(predicate).ToListAsync();
+        return dbSet.Where(predicate);
     }
 }

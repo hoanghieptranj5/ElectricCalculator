@@ -31,4 +31,13 @@ public class CalculationHistoryLogic : ICalculationHistoryLogic
     {
         return await _unitOfWork.CalculationHistories.All().ToListAsync();
     }
+
+    public async Task<IEnumerable<CalculationHistory>> HistoriesWithinOneMonthBefore()
+    {
+        var result = await _unitOfWork.CalculationHistories
+            .Find(x => x.IssuedTime.Month < DateTime.Now.Month
+            && x.IssuedTime.Month > DateTime.Now.Month - 2)
+            .ToListAsync();
+        return result;
+    }
 }
